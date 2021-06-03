@@ -9,22 +9,25 @@
 </head>
 
 <body>
-  <h1>Login Works!!</h1>
-  <h2>Reporting.cse135.site</h2>
-  <script>
-    document.write(`Live @ ${new Date()}`);
-  </script>
+  <h1>Reports</h1>
+  
 
-<a href="/cgi-bin/home.php">link</a>
+  <form action="https://reporting.ryanmcclure.xyz/authapp/logout" id="logout" method="GET">
+    <input type="submit" name="log" id="log" value="Logout">
+  </form>
 
+  <form action="https://reporting.ryanmcclure.xyz/authapp/users" id="manage" method="GET">
+    <button type="submit">User Management</button>
+  </form>
 
-<form action="https://reporting.ryanmcclure.xyz/authapp/logout" id="logout" method="GET">
-  <input type="submit" name="log" id="log" value="Logout">
-</form>
-
+  <br>
+  <br>
 
 
 
 </body>
 
 </html>
+
+
+
