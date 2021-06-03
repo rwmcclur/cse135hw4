@@ -16,7 +16,38 @@
     <button type="submit">Home</button>
   </form>
 
+  <br>
+  <br>
+  <h2>Add New User</h2>
+  <form action="https://reporting.ryanmcclure.xyz/authapp/addUser" id="addUser" method="POST">
+    <label>Username</label>
+    <input type="text" name="username" id="AddUname" placeholder="Username">
+    <br>
+    <br>
+    <label>Password</label>
+    <input type="password" name="password" id="Addpass" placeholder="Password">
+    <br>
+    <br>
+    <input type="submit" name="log" id="log" value="Add New User">
+    <br>
+    <br>
+  </form>
 
+  <br>
+  <br>
+  <h2>Delete User</h2>
+  <form action="https://reporting.ryanmcclure.xyz/authapp/deleteUser" id="delUser" method="POST">
+    <label>Username</label>
+    <input type="text" name="username" id="deleteUname" placeholder="Username">
+    <br>
+    <br>
+    <input type="submit" name="delete" id="del" value="Delete User">
+    <br>
+    <br>
+  </form>
+
+  
+  
 
 </body>
 

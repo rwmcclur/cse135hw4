@@ -30,7 +30,6 @@ mongoose.connect('mongodb://localhost/AuthApp',
   { useNewUrlParser: true, useUnifiedTopology: true });
 
 
-var db = mongoose.connection;
 
 const Schema = mongoose.Schema;
 const UserDetail = new Schema({
@@ -79,7 +78,7 @@ app.get('/home', connectEnsureLogin.ensureLoggedIn(), function(req, res){
 });
 
 
-//ALERT: ADD IN ADMIN CHECK!!!!
+
 app.get('/users', connectEnsureLogin.ensureLoggedIn(), function(req, res) {
   let lazyAdminCheck = req.user.username;
   if(lazyAdminCheck == 'admin'){
@@ -89,22 +88,42 @@ app.get('/users', connectEnsureLogin.ensureLoggedIn(), function(req, res) {
 });
 
 
-/*
-app.get('/userTable', connectEnsureLogin.ensureLoggedIn, function(req, res){
+
+app.get('/userTable', function(req, res){
   
 
   UserDetails.find({}, function(err, docs){
     if(!err){
+      res.send(docs);
       console.log(docs);
+    } else{
+      res.send(err);
     }
   });
   
   
     
 });
-*/
+
+
+app.post('/addUser', function(req, res){
+  let userInfo = req.body;
+  UserDetails.register({username: userInfo.username, active: false}, userInfo.password);
+  res.redirect('users');
+});
+
+
+app.post('/deleteUser', function(req, res){
+  let userInfo = req.body;
+  UserDetails.deleteOne({username: userInfo.username}, function(err){
+    if(err) console.log(err);
+    else console.log('successful delete');
+  });
+  res.redirect('users');
+});
+
+
 
 
 app.listen(port);
 
-//UserDetails.register({username:'admin', active: false}, 'admin');
