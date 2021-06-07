@@ -11,7 +11,7 @@ USER MANAGEMENT
 username: admin
 password: admin
 
-[grader account]
+[basic account]
 username: grader
 password: grader
 
