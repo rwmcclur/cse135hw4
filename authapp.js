@@ -74,7 +74,13 @@ app.get('/logout', function(req,res){
 
 
 app.get('/home', connectEnsureLogin.ensureLoggedIn(), function(req, res){
-    res.sendFile('home.html', { root: __dirname });
+    let lazyAdminCheck = req.user.username;
+    if(lazyAdminCheck == 'admin'){
+      res.sendFile('adminhome.html', { root: __dirname });
+    } else{
+      res.sendFile('home.html', { root: __dirname });
+    }
+    
 });
 
 
